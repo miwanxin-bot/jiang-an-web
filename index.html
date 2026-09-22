@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f4ead6" />
+  <title>老汉口 看江岸｜江岸美食分布指南</title>
+  <meta name="description" content="江岸街巷美食互动导览：从早餐到宵夜，在地图上点击街区进入浏览。" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="app" class="app-shell">
+    <section id="mapView" class="view" aria-labelledby="mapTitle">
+      <header class="hero">
+        <p class="eyebrow">TASTE TRAILS OF JIANG'AN</p>
+        <h1 id="mapTitle">老汉口 · 看江岸</h1>
+        <p class="hero-copy">点击地图上的街道名称，进入对应的美食街巷。</p>
+      </header>
+
+      <div class="map-toolbar" aria-label="地图工具">
+        <span class="map-hint">点击街名进入 · 可放大地图查看</span>
+        <button id="zoomBtn" class="ghost-btn" type="button" aria-pressed="false">放大地图</button>
+      </div>
+
+      <div id="mapScroller" class="map-scroller">
+        <div id="mapCanvas" class="map-canvas">
+          <img class="map-image" src="assets/map.jpg" alt="江岸美食分布地图" draggable="false" />
+          <button class="hotspot oldshops" type="button" data-route="oldshops" aria-label="进入老字号"><span>老字号</span></button>
+          <button class="hotspot coffee" type="button" data-route="coffee" aria-label="进入咖啡街"><span>咖啡街</span></button>
+          <button class="hotspot breakfast" type="button" data-route="breakfast" aria-label="进入早餐一条街"><span>早餐一条街</span></button>
+          <button class="hotspot bread" type="button" data-route="bread" aria-label="进入面包街"><span>面包街</span></button>
+          <button class="hotspot night" type="button" data-route="night" aria-label="进入夜市一条街"><span>夜市一条街</span></button>
+        </div>
+      </div>
+
+      <nav class="quick-nav" aria-label="街区快速入口">
+        <button type="button" data-route="breakfast"><strong>过早</strong><span>早餐一条街</span></button>
+        <button type="button" data-route="coffee"><strong>咖啡街</strong><span>街巷寻咖香</span></button>
+        <button type="button" data-route="oldshops"><strong>老字号</strong><span>老汉口味道</span></button>
+        <button type="button" data-route="bread"><strong>面包街</strong><span>一街闻麦香</span></button>
+        <button type="button" data-route="night"><strong>宵夜街</strong><span>越夜越有味</span></button>
+        <button type="button" data-route="skyline"><strong>江岸之巅</strong><span>夜景与高空餐厅</span></button>
+      </nav>
+
+      <footer class="home-footer">江岸美食分布指南 · 手机交互网页测试版</footer>
+    </section>
+
+    <section id="detailView" class="view detail-view" hidden aria-live="polite">
+      <header class="detail-bar">
+        <button id="backBtn" class="back-btn" type="button" aria-label="返回地图">← 地图</button>
+        <div class="detail-heading">
+          <p id="detailKicker" class="detail-kicker"></p>
+          <h2 id="detailTitle"></h2>
+        </div>
+        <button id="menuBtn" class="menu-btn" type="button" aria-expanded="false" aria-controls="routeMenu">街区</button>
+      </header>
+
+      <nav id="routeMenu" class="route-menu" hidden aria-label="切换街区">
+        <button type="button" data-route="breakfast">过早</button>
+        <button type="button" data-route="coffee">咖啡街</button>
+        <button type="button" data-route="oldshops">老字号</button>
+        <button type="button" data-route="bread">面包街</button>
+        <button type="button" data-route="night">宵夜街</button>
+        <button type="button" data-route="skyline">江岸之巅</button>
+      </nav>
+
+      <div class="detail-intro">
+        <p id="detailIntro"></p>
+        <span>完整保留原版页面 · 点击整页可放大查看细节</span>
+      </div>
+
+      <div id="pageStack" class="page-stack"></div>
+
+      <div class="detail-end">
+        <button id="endBackBtn" class="primary-btn" type="button">返回总地图</button>
+      </div>
+    </section>
+
+    <div id="imageViewer" class="image-viewer" hidden role="dialog" aria-modal="true" aria-label="页面放大查看">
+      <div class="viewer-toolbar">
+        <button id="viewerClose" type="button" class="viewer-btn">关闭</button>
+        <span id="viewerLabel" class="viewer-label"></span>
+        <div class="viewer-actions" aria-label="缩放控制">
+          <button id="zoomOut" type="button" class="viewer-btn" aria-label="缩小">−</button>
+          <button id="zoomReset" type="button" class="viewer-btn">适屏</button>
+          <button id="zoomIn" type="button" class="viewer-btn" aria-label="放大">＋</button>
+        </div>
+      </div>
+      <div id="viewerScroller" class="viewer-scroller">
+        <img id="viewerImage" class="viewer-image" alt="" draggable="false" />
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
